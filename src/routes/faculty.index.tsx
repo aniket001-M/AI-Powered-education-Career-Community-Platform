@@ -12,7 +12,8 @@ export const Route = createFileRoute("/faculty/")({
       { title: "Faculty overview — CareerGraph" },
       {
         name: "description",
-        content: "Mentee load, pending roadmap reviews and escalations that need department action.",
+        content:
+          "Mentee load, pending roadmap reviews and escalations that need department action.",
       },
       { property: "og:title", content: "Faculty overview — CareerGraph" },
       { property: "og:description", content: "A mentor's queue for the current term." },
@@ -28,7 +29,10 @@ const queue: [string, string, string][] = [
 ];
 
 function FacultyOverview() {
-  const metrics = useQuery({ queryKey: ["metrics", "faculty"], queryFn: () => getMetrics("faculty") });
+  const metrics = useQuery({
+    queryKey: ["metrics", "faculty"],
+    queryFn: () => getMetrics("faculty"),
+  });
   const mentees = useQuery({ queryKey: ["mentees"], queryFn: getMentees });
 
   const critical = (mentees.data ?? []).filter((m) => m.flag === "critical");
@@ -71,7 +75,11 @@ function FacultyOverview() {
                     {who} · {note}
                   </p>
                 </div>
-                <Button size="sm" variant="outline" onClick={() => toast.success(`${title} signed off`)}>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={() => toast.success(`${title} signed off`)}
+                >
                   Sign off
                 </Button>
               </li>

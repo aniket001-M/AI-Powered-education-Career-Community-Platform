@@ -38,12 +38,7 @@ export interface JobRole {
 }
 
 export type ApplicationStage =
-  | "draft"
-  | "applied"
-  | "screening"
-  | "interview"
-  | "offer"
-  | "rejected";
+  "draft" | "applied" | "screening" | "interview" | "offer" | "rejected";
 
 export interface Application {
   id: string;

@@ -103,7 +103,11 @@ function Contact() {
             </Button>
           </div>
         ) : (
-          <form onSubmit={onSubmit} noValidate className="space-y-6 border border-border bg-card p-8">
+          <form
+            onSubmit={onSubmit}
+            noValidate
+            className="space-y-6 border border-border bg-card p-8"
+          >
             <Field
               id="name"
               label="Full name"

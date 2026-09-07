@@ -91,7 +91,11 @@ function MenteesPage() {
                 <Button size="sm" onClick={() => toast.success(`Meeting requested with ${m.name}`)}>
                   Schedule meeting
                 </Button>
-                <Button size="sm" variant="outline" onClick={() => toast("Note added to the record")}>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={() => toast("Note added to the record")}
+                >
                   Add note
                 </Button>
               </div>

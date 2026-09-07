@@ -14,7 +14,10 @@ export const Route = createFileRoute("/admin/")({
         content: "Cohort size, placement rate, readiness median and the at-risk queue in one view.",
       },
       { property: "og:title", content: "Administration overview — CareerGraph" },
-      { property: "og:description", content: "The placement office's daily read of the institution." },
+      {
+        property: "og:description",
+        content: "The placement office's daily read of the institution.",
+      },
     ],
   }),
   component: AdminOverview,
@@ -47,7 +50,10 @@ function AdminOverview() {
       <section>
         <div className="flex items-end justify-between border-b border-border pb-3">
           <h2 className="text-2xl">At-risk queue</h2>
-          <Link to="/admin/students" className="inline-flex items-center gap-2 text-sm underline underline-offset-8">
+          <Link
+            to="/admin/students"
+            className="inline-flex items-center gap-2 text-sm underline underline-offset-8"
+          >
             Open register
             <ArrowRight className="h-4 w-4" aria-hidden />
           </Link>

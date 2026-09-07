@@ -76,7 +76,13 @@ function Analytics() {
                 <LineChart data={data ?? []}>
                   <CartesianGrid vertical={false} stroke="var(--color-border)" />
                   <XAxis dataKey="period" tickLine={false} axisLine={false} tick={axis} />
-                  <YAxis domain={[40, 80]} tickLine={false} axisLine={false} tick={axis} width={32} />
+                  <YAxis
+                    domain={[40, 80]}
+                    tickLine={false}
+                    axisLine={false}
+                    tick={axis}
+                    width={32}
+                  />
                   <Tooltip
                     contentStyle={{
                       background: "var(--color-card)",

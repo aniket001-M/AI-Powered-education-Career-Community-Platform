@@ -16,7 +16,8 @@ export const Route = createFileRoute("/senior/referrals")({
       { title: "Referrals — CareerGraph" },
       {
         name: "description",
-        content: "Referral requests from students, from pending through forwarded, interviewing and closed.",
+        content:
+          "Referral requests from students, from pending through forwarded, interviewing and closed.",
       },
       { property: "og:title", content: "Referrals — CareerGraph" },
       { property: "og:description", content: "The senior's referral ledger for the cohort." },

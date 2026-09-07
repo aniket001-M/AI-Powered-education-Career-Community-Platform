@@ -22,7 +22,8 @@ export const Route = createFileRoute("/student/skills")({
       { title: "Skill graph — CareerGraph" },
       {
         name: "description",
-        content: "Proficiency against market demand for every tracked capability, with verification status.",
+        content:
+          "Proficiency against market demand for every tracked capability, with verification status.",
       },
       { property: "og:title", content: "Skill graph — CareerGraph" },
       { property: "og:description", content: "Where a student is strong, thin, and unverified." },
@@ -105,15 +106,16 @@ function SkillsPage() {
                 <div>
                   <h2 className="flex items-center gap-2 text-xl">
                     {s.name}
-                    {s.verified ? (
-                      <BadgeCheck className="h-4 w-4" aria-label="Verified" />
-                    ) : null}
+                    {s.verified ? <BadgeCheck className="h-4 w-4" aria-label="Verified" /> : null}
                   </h2>
                   <p className="label-caps mt-1">
                     {s.category} · {s.level}
                   </p>
                 </div>
-                <Badge variant={s.verified ? "default" : "outline"} className="font-mono text-[11px]">
+                <Badge
+                  variant={s.verified ? "default" : "outline"}
+                  className="font-mono text-[11px]"
+                >
                   {s.verified ? "Verified" : "Unverified"}
                 </Badge>
               </div>

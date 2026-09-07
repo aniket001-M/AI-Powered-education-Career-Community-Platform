@@ -58,9 +58,7 @@ function Workspaces() {
       <section className="border-b border-border">
         <div className="mx-auto max-w-6xl px-5 py-20">
           <p className="label-caps">Workspaces</p>
-          <h1 className="mt-6 max-w-3xl text-5xl leading-[1.08] md:text-6xl">
-            Choose a room.
-          </h1>
+          <h1 className="mt-6 max-w-3xl text-5xl leading-[1.08] md:text-6xl">Choose a room.</h1>
           <p className="mt-6 max-w-xl text-sm text-muted-foreground">
             This demonstration has no sign-in. Selecting a workspace loads that role with mock data.
           </p>
@@ -85,7 +83,10 @@ function Workspaces() {
               </div>
               <span className="mt-10 inline-flex items-center gap-2 text-sm underline underline-offset-8">
                 Enter
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
+                <ArrowRight
+                  className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                  aria-hidden
+                />
               </span>
             </Link>
           ))}

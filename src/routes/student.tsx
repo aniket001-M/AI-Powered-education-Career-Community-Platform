@@ -1,5 +1,12 @@
 import { createFileRoute, Outlet } from "@tanstack/react-router";
-import { Briefcase, GitBranch, LayoutDashboard, ListChecks, Route as RouteIcon, UserRound } from "lucide-react";
+import {
+  Briefcase,
+  GitBranch,
+  LayoutDashboard,
+  ListChecks,
+  Route as RouteIcon,
+  UserRound,
+} from "lucide-react";
 import { AppShell } from "@/components/app-shell";
 
 export const Route = createFileRoute("/student")({

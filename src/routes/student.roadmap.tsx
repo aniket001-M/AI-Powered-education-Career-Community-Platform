@@ -14,10 +14,14 @@ export const Route = createFileRoute("/student/roadmap")({
       { title: "Roadmap — CareerGraph" },
       {
         name: "description",
-        content: "Term-by-term milestones with status, duration and the outcomes each one must produce.",
+        content:
+          "Term-by-term milestones with status, duration and the outcomes each one must produce.",
       },
       { property: "og:title", content: "Roadmap — CareerGraph" },
-      { property: "og:description", content: "The planned route from foundations audit to placement window." },
+      {
+        property: "og:description",
+        content: "The planned route from foundations audit to placement window.",
+      },
     ],
   }),
   component: RoadmapPage,

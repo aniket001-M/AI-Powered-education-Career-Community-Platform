@@ -33,10 +33,14 @@ export const Route = createFileRoute("/student/opportunities")({
       { title: "Opportunities — CareerGraph" },
       {
         name: "description",
-        content: "Roles scored against the current skill graph, filterable by type, mode and match threshold.",
+        content:
+          "Roles scored against the current skill graph, filterable by type, mode and match threshold.",
       },
       { property: "og:title", content: "Opportunities — CareerGraph" },
-      { property: "og:description", content: "Matched internships and full-time roles for this term." },
+      {
+        property: "og:description",
+        content: "Matched internships and full-time roles for this term.",
+      },
     ],
   }),
   component: OpportunitiesPage,

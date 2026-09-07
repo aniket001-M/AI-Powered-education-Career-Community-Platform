@@ -81,7 +81,9 @@ function ProfilePage() {
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <Input id="email" value={draft.email} readOnly aria-readonly className="bg-muted" />
-              <p className="text-xs text-muted-foreground">Institutional address cannot be edited.</p>
+              <p className="text-xs text-muted-foreground">
+                Institutional address cannot be edited.
+              </p>
             </div>
             <div className="space-y-2">
               <Label htmlFor="dept">Department</Label>
@@ -116,7 +118,9 @@ function ProfilePage() {
                 {error}
               </p>
             ) : (
-              <p className="text-xs text-muted-foreground">One line on what you are building toward.</p>
+              <p className="text-xs text-muted-foreground">
+                One line on what you are building toward.
+              </p>
             )}
           </div>
 
@@ -131,7 +135,12 @@ function ProfilePage() {
                 "Save profile"
               )}
             </Button>
-            <Button type="button" variant="outline" onClick={() => setDraft(data!)} disabled={saving}>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => setDraft(data!)}
+              disabled={saving}
+            >
               Discard changes
             </Button>
           </div>

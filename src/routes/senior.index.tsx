@@ -21,7 +21,10 @@ export const Route = createFileRoute("/senior/")({
 });
 
 function SeniorOverview() {
-  const metrics = useQuery({ queryKey: ["metrics", "senior"], queryFn: () => getMetrics("senior") });
+  const metrics = useQuery({
+    queryKey: ["metrics", "senior"],
+    queryFn: () => getMetrics("senior"),
+  });
   const referrals = useQuery({ queryKey: ["referrals"], queryFn: getReferrals });
 
   const pending = (referrals.data ?? []).filter((r) => r.status === "pending");

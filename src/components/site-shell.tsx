@@ -67,7 +67,11 @@ export function SiteShell({ children }: { children: ReactNode }) {
                 </li>
               ))}
               <li>
-                <Link to="/workspaces" onClick={() => setOpen(false)} className="text-sm font-medium">
+                <Link
+                  to="/workspaces"
+                  onClick={() => setOpen(false)}
+                  className="text-sm font-medium"
+                >
                   Enter workspace
                 </Link>
               </li>
@@ -85,7 +89,8 @@ export function SiteShell({ children }: { children: ReactNode }) {
           <div>
             <p className="font-mono text-sm tracking-[0.24em] uppercase">Careergraph</p>
             <p className="mt-3 max-w-xs text-sm text-muted-foreground">
-              Career intelligence for institutions that treat placement as a curriculum, not a season.
+              Career intelligence for institutions that treat placement as a curriculum, not a
+              season.
             </p>
           </div>
           <FooterCol
@@ -118,13 +123,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
   );
 }
 
-function FooterCol({
-  title,
-  items,
-}: {
-  title: string;
-  items: { to: string; label: string }[];
-}) {
+function FooterCol({ title, items }: { title: string; items: { to: string; label: string }[] }) {
   return (
     <div>
       <p className="label-caps">{title}</p>

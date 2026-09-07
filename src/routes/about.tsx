@@ -21,10 +21,26 @@ export const Route = createFileRoute("/about")({
 });
 
 const principles: [string, string, string][] = [
-  ["01", "One definition", "Readiness means the same thing in a student's dashboard and in the board report. No parallel numbers."],
-  ["02", "Evidence over claims", "A skill counts when it has been assessed, reviewed or shipped. Everything else is marked unverified."],
-  ["03", "Legible by default", "Strict monochrome, generous rules, no decoration that carries no information."],
-  ["04", "Slow signals matter", "Term-scale movement is the unit of progress, not weekly activity theatre."],
+  [
+    "01",
+    "One definition",
+    "Readiness means the same thing in a student's dashboard and in the board report. No parallel numbers.",
+  ],
+  [
+    "02",
+    "Evidence over claims",
+    "A skill counts when it has been assessed, reviewed or shipped. Everything else is marked unverified.",
+  ],
+  [
+    "03",
+    "Legible by default",
+    "Strict monochrome, generous rules, no decoration that carries no information.",
+  ],
+  [
+    "04",
+    "Slow signals matter",
+    "Term-scale movement is the unit of progress, not weekly activity theatre.",
+  ],
 ];
 
 const timeline: [string, string][] = [
@@ -45,8 +61,8 @@ function About() {
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground">
             CareerGraph was built inside a placement office that was drowning in exports. The fix
-            was not another dashboard; it was agreeing, once, on what a prepared student looks like —
-            then rendering that agreement everywhere.
+            was not another dashboard; it was agreeing, once, on what a prepared student looks like
+            — then rendering that agreement everywhere.
           </p>
         </div>
       </section>

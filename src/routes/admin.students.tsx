@@ -64,7 +64,12 @@ function StudentRegister() {
       <div className="grid gap-4 sm:grid-cols-[1fr_14rem]">
         <div className="space-y-2">
           <Label htmlFor="q">Search by name</Label>
-          <Input id="q" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="e.g. Rhea" />
+          <Input
+            id="q"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="e.g. Rhea"
+          />
         </div>
         <div className="space-y-2">
           <Label htmlFor="status">Status</Label>
