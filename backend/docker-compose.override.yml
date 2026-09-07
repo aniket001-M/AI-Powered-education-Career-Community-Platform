@@ -1,0 +1,12 @@
+# Development overrides for docker compose
+# To use: docker compose up (this file is automatically merged)
+version: '3.9'
+
+services:
+  api:
+    command: npm run dev
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development

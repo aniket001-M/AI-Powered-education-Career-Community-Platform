@@ -1,0 +1,13 @@
+process.env.NODE_ENV = 'test';
+process.env.PORT = '3001';
+process.env.DATABASE_URL = 'mongodb://localhost:27017/careergraph-test';
+process.env.REDIS_URL = 'redis://localhost:6379';
+process.env.JWT_ACCESS_SECRET = 'test-jwt-access-secret-32-character-minimum!';
+process.env.JWT_ACCESS_EXPIRES_IN = '15m';
+process.env.JWT_REFRESH_SECRET = 'test-jwt-refresh-secret-32-character-minimum!';
+process.env.JWT_REFRESH_EXPIRES_IN = '7d';
+process.env.BCRYPT_ROUNDS = '4'; // Fast rounds for tests
+process.env.CORS_ORIGIN = 'http://localhost:5173';
+process.env.RATE_LIMIT_TTL = '900';
+process.env.RATE_LIMIT_LIMIT = '100';
+process.env.EMAIL_VERIFICATION_REQUIRED = 'false';
