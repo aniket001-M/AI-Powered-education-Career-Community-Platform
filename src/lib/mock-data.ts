@@ -1,0 +1,158 @@
+import type {
+  AlumniStory,
+  Application,
+  JobRole,
+  Mentee,
+  Metric,
+  Referral,
+  RoadmapMilestone,
+  Skill,
+  StudentProfile,
+  StudentRecord,
+  TrendPoint,
+} from "./types";
+
+export const studentProfile: StudentProfile = {
+  id: "stu-1042",
+  name: "Aniket Ghosh",
+  email: "aniket.ghosh@careergraph.edu",
+  batch: "2027",
+  department: "Computer Science & Engineering",
+  cgpa: 8.72,
+  headline: "Backend systems and applied data engineering",
+  location: "Pune, India",
+  readiness: 74,
+  mentor: "Dr. Meera Iyer",
+};
+
+export const skills: Skill[] = [
+  { id: "sk-1", name: "TypeScript", category: "engineering", level: "advanced", proficiency: 82, demandIndex: 91, verified: true, lastAssessed: "2026-08-14" },
+  { id: "sk-2", name: "Distributed Systems", category: "systems", level: "intermediate", proficiency: 61, demandIndex: 88, verified: false, lastAssessed: "2026-07-02" },
+  { id: "sk-3", name: "SQL & Warehousing", category: "data", level: "advanced", proficiency: 78, demandIndex: 84, verified: true, lastAssessed: "2026-08-01" },
+  { id: "sk-4", name: "Product Discovery", category: "product", level: "beginner", proficiency: 34, demandIndex: 66, verified: false, lastAssessed: "2026-05-19" },
+  { id: "sk-5", name: "Interface Systems", category: "design", level: "intermediate", proficiency: 58, demandIndex: 71, verified: true, lastAssessed: "2026-06-27" },
+  { id: "sk-6", name: "Python for ML", category: "data", level: "expert", proficiency: 90, demandIndex: 95, verified: true, lastAssessed: "2026-08-22" },
+];
+
+export const roadmap: RoadmapMilestone[] = [
+  {
+    id: "ms-1",
+    title: "Foundations audit",
+    summary: "Baseline assessment across algorithms, systems and communication.",
+    term: "Term 3",
+    status: "completed",
+    weeks: 4,
+    outcomes: ["Baseline score recorded", "Gap report generated"],
+  },
+  {
+    id: "ms-2",
+    title: "Systems depth track",
+    summary: "Storage engines, consistency models and load design studies.",
+    term: "Term 4",
+    status: "in-progress",
+    weeks: 10,
+    outcomes: ["Two design writeups", "One reviewed capstone module"],
+  },
+  {
+    id: "ms-3",
+    title: "Industry simulation",
+    summary: "Mock loops with faculty panel and senior alumni reviewers.",
+    term: "Term 5",
+    status: "upcoming",
+    weeks: 6,
+    outcomes: ["Four graded loops", "Portfolio narrative"],
+  },
+  {
+    id: "ms-4",
+    title: "Placement window",
+    summary: "Targeted applications, referrals and offer negotiation prep.",
+    term: "Term 6",
+    status: "upcoming",
+    weeks: 8,
+    outcomes: ["Shortlist of 12 roles", "Referral coverage above 40%"],
+  },
+  {
+    id: "ms-5",
+    title: "Research elective",
+    summary: "Blocked until the systems depth track review is signed off.",
+    term: "Term 5",
+    status: "blocked",
+    weeks: 6,
+    outcomes: ["Faculty approval pending"],
+  },
+];
+
+export const jobs: JobRole[] = [
+  { id: "job-1", title: "Backend Engineer, Platform", company: "Northwind Systems", location: "Bengaluru", mode: "hybrid", type: "full-time", salaryRange: "₹18–24 LPA", postedAt: "2026-09-02", matchScore: 92, skills: ["TypeScript", "Distributed Systems", "SQL & Warehousing"], description: "Own service boundaries for the ingestion platform and its consistency guarantees." },
+  { id: "job-2", title: "Data Engineering Intern", company: "Halden Analytics", location: "Remote", mode: "remote", type: "internship", salaryRange: "₹60k / month", postedAt: "2026-08-28", matchScore: 84, skills: ["Python for ML", "SQL & Warehousing"], description: "Build batch pipelines and quality checks across a multi-tenant warehouse." },
+  { id: "job-3", title: "Product Engineer", company: "Cadence Labs", location: "Pune", mode: "onsite", type: "full-time", salaryRange: "₹14–19 LPA", postedAt: "2026-08-25", matchScore: 71, skills: ["TypeScript", "Interface Systems", "Product Discovery"], description: "Ship customer-facing surfaces end to end with a small, senior team." },
+  { id: "job-4", title: "Infrastructure Intern", company: "Meridian Cloud", location: "Hyderabad", mode: "hybrid", type: "internship", salaryRange: "₹45k / month", postedAt: "2026-08-19", matchScore: 66, skills: ["Distributed Systems", "Python for ML"], description: "Support reliability tooling and capacity reporting for the storage fleet." },
+  { id: "job-5", title: "Applied ML Engineer", company: "Orrery Research", location: "Remote", mode: "remote", type: "full-time", salaryRange: "₹22–30 LPA", postedAt: "2026-09-04", matchScore: 88, skills: ["Python for ML", "SQL & Warehousing", "Distributed Systems"], description: "Take retrieval and ranking experiments from notebook to production." },
+];
+
+export const applications: Application[] = [
+  { id: "app-1", jobId: "job-1", role: "Backend Engineer, Platform", company: "Northwind Systems", stage: "interview", updatedAt: "2026-09-05", nextStep: "System design loop on 12 Sep" },
+  { id: "app-2", jobId: "job-2", role: "Data Engineering Intern", company: "Halden Analytics", stage: "screening", updatedAt: "2026-09-03", nextStep: "Recruiter call to be scheduled" },
+  { id: "app-3", jobId: "job-5", role: "Applied ML Engineer", company: "Orrery Research", stage: "applied", updatedAt: "2026-09-04", nextStep: "Awaiting acknowledgement" },
+  { id: "app-4", jobId: "job-3", role: "Product Engineer", company: "Cadence Labs", stage: "rejected", updatedAt: "2026-08-21", nextStep: "Review feedback with mentor" },
+  { id: "app-5", jobId: "job-4", role: "Infrastructure Intern", company: "Meridian Cloud", stage: "draft", updatedAt: "2026-08-30", nextStep: "Finish the statement of interest" },
+];
+
+export const studentRecords: StudentRecord[] = [
+  { id: "stu-1042", name: "Aniket Ghosh", department: "CSE", batch: "2027", readiness: 74, applications: 5, status: "active" },
+  { id: "stu-1043", name: "Rhea Menon", department: "CSE", batch: "2027", readiness: 91, applications: 9, status: "placed" },
+  { id: "stu-1044", name: "Yusuf Khan", department: "ECE", batch: "2026", readiness: 48, applications: 2, status: "at-risk" },
+  { id: "stu-1045", name: "Divya Raman", department: "IT", batch: "2027", readiness: 66, applications: 6, status: "active" },
+  { id: "stu-1046", name: "Karan Bhatt", department: "MECH", batch: "2026", readiness: 39, applications: 1, status: "at-risk" },
+  { id: "stu-1047", name: "Sana Qureshi", department: "CSE", batch: "2028", readiness: 82, applications: 7, status: "active" },
+];
+
+export const mentees: Mentee[] = [
+  { id: "mn-1", name: "Aniket Ghosh", batch: "2027", focus: "Backend systems", readiness: 74, lastMeeting: "2026-08-29", flag: "on-track" },
+  { id: "mn-2", name: "Yusuf Khan", batch: "2026", focus: "Embedded firmware", readiness: 48, lastMeeting: "2026-07-14", flag: "critical" },
+  { id: "mn-3", name: "Divya Raman", batch: "2027", focus: "Data platforms", readiness: 66, lastMeeting: "2026-08-20", flag: "needs-review" },
+  { id: "mn-4", name: "Sana Qureshi", batch: "2028", focus: "Applied ML", readiness: 82, lastMeeting: "2026-09-01", flag: "on-track" },
+];
+
+export const referrals: Referral[] = [
+  { id: "rf-1", student: "Aniket Ghosh", role: "Backend Engineer, Platform", company: "Northwind Systems", submittedAt: "2026-09-01", status: "interviewing" },
+  { id: "rf-2", student: "Divya Raman", role: "Data Engineering Intern", company: "Halden Analytics", submittedAt: "2026-08-27", status: "forwarded" },
+  { id: "rf-3", student: "Yusuf Khan", role: "Infrastructure Intern", company: "Meridian Cloud", submittedAt: "2026-08-30", status: "pending" },
+  { id: "rf-4", student: "Rhea Menon", role: "Applied ML Engineer", company: "Orrery Research", submittedAt: "2026-07-30", status: "closed" },
+];
+
+export const alumniStories: AlumniStory[] = [
+  { id: "al-1", name: "Rhea Menon", batch: "2023", role: "Staff Engineer", company: "Northwind Systems", quote: "The graph made the gap obvious: I was strong on syntax and thin on systems.", path: ["Intern, 2022", "Engineer, 2023", "Senior, 2025", "Staff, 2026"] },
+  { id: "al-2", name: "Imran Sheikh", batch: "2021", role: "Data Platform Lead", company: "Halden Analytics", quote: "Two terms of deliberate practice beat four years of unfocused coursework.", path: ["Analyst, 2021", "Engineer, 2022", "Lead, 2025"] },
+  { id: "al-3", name: "Tara Nambiar", batch: "2022", role: "Product Engineer", company: "Cadence Labs", quote: "Referral coverage was the single lever that changed my interview volume.", path: ["Intern, 2021", "Engineer, 2022", "Product Engineer, 2024"] },
+];
+
+export const adminMetrics: Metric[] = [
+  { id: "m-1", label: "Tracked students", value: "2,418", delta: "+124", trend: "up", hint: "Across six departments" },
+  { id: "m-2", label: "Placement rate", value: "78.4%", delta: "+3.1 pts", trend: "up", hint: "Rolling twelve months" },
+  { id: "m-3", label: "Median readiness", value: "68", delta: "-2", trend: "down", hint: "Index of 100" },
+  { id: "m-4", label: "At-risk cohort", value: "213", delta: "flat", trend: "flat", hint: "Readiness below 50" },
+];
+
+export const facultyMetrics: Metric[] = [
+  { id: "f-1", label: "Active mentees", value: "24", delta: "+3", trend: "up", hint: "Assigned this term" },
+  { id: "f-2", label: "Reviews pending", value: "7", delta: "-2", trend: "down", hint: "Roadmap sign-offs" },
+  { id: "f-3", label: "Avg. readiness", value: "67", delta: "+4", trend: "up", hint: "Mentee cohort" },
+  { id: "f-4", label: "Escalations", value: "2", delta: "flat", trend: "flat", hint: "Needs department action" },
+];
+
+export const seniorMetrics: Metric[] = [
+  { id: "s-1", label: "Referrals made", value: "18", delta: "+4", trend: "up", hint: "This academic year" },
+  { id: "s-2", label: "Converted", value: "6", delta: "+2", trend: "up", hint: "Reached offer stage" },
+  { id: "s-3", label: "Open requests", value: "9", delta: "+1", trend: "up", hint: "Awaiting your review" },
+  { id: "s-4", label: "Mentoring hours", value: "31", delta: "+5", trend: "up", hint: "Logged since April" },
+];
+
+export const trend: TrendPoint[] = [
+  { period: "Q1 25", placements: 142, readiness: 58 },
+  { period: "Q2 25", placements: 168, readiness: 61 },
+  { period: "Q3 25", placements: 154, readiness: 63 },
+  { period: "Q4 25", placements: 193, readiness: 66 },
+  { period: "Q1 26", placements: 221, readiness: 69 },
+  { period: "Q2 26", placements: 238, readiness: 68 },
+];
