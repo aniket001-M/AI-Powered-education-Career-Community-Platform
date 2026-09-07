@@ -14,7 +14,11 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as PlatformRouteImport } from './routes/platform'
 import { Route as StoriesRouteImport } from './routes/stories'
+import { Route as StudentRouteImport } from './routes/student'
 import { Route as WorkspacesRouteImport } from './routes/workspaces'
+import { Route as StudentIndexRouteImport } from './routes/student.index'
+import { Route as StudentRoadmapRouteImport } from './routes/student.roadmap'
+import { Route as StudentSkillsRouteImport } from './routes/student.skills'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -41,10 +45,30 @@ const StoriesRoute = StoriesRouteImport.update({
   path: '/stories',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StudentRoute = StudentRouteImport.update({
+  id: '/student',
+  path: '/student',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WorkspacesRoute = WorkspacesRouteImport.update({
   id: '/workspaces',
   path: '/workspaces',
   getParentRoute: () => rootRouteImport,
+} as any)
+const StudentIndexRoute = StudentIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => StudentRoute,
+} as any)
+const StudentRoadmapRoute = StudentRoadmapRouteImport.update({
+  id: '/roadmap',
+  path: '/roadmap',
+  getParentRoute: () => StudentRoute,
+} as any)
+const StudentSkillsRoute = StudentSkillsRouteImport.update({
+  id: '/skills',
+  path: '/skills',
+  getParentRoute: () => StudentRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -53,7 +77,11 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/platform': typeof PlatformRoute
   '/stories': typeof StoriesRoute
+  '/student': typeof StudentRouteWithChildren
   '/workspaces': typeof WorkspacesRoute
+  '/student/roadmap': typeof StudentRoadmapRoute
+  '/student/skills': typeof StudentSkillsRoute
+  '/student/': typeof StudentIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +90,9 @@ export interface FileRoutesByTo {
   '/platform': typeof PlatformRoute
   '/stories': typeof StoriesRoute
   '/workspaces': typeof WorkspacesRoute
+  '/student/roadmap': typeof StudentRoadmapRoute
+  '/student/skills': typeof StudentSkillsRoute
+  '/student': typeof StudentIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -70,14 +101,36 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/platform': typeof PlatformRoute
   '/stories': typeof StoriesRoute
+  '/student': typeof StudentRouteWithChildren
   '/workspaces': typeof WorkspacesRoute
+  '/student/roadmap': typeof StudentRoadmapRoute
+  '/student/skills': typeof StudentSkillsRoute
+  '/student/': typeof StudentIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/about' | '/contact' | '/platform' | '/stories' | '/workspaces'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/platform'
+    | '/stories'
+    | '/student'
+    | '/workspaces'
+    | '/student/roadmap'
+    | '/student/skills'
+    | '/student/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/platform' | '/stories' | '/workspaces'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/platform'
+    | '/stories'
+    | '/workspaces'
+    | '/student/roadmap'
+    | '/student/skills'
+    | '/student'
   id:
     | '__root__'
     | '/'
@@ -85,7 +138,11 @@ export interface FileRouteTypes {
     | '/contact'
     | '/platform'
     | '/stories'
+    | '/student'
     | '/workspaces'
+    | '/student/roadmap'
+    | '/student/skills'
+    | '/student/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -94,6 +151,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   PlatformRoute: typeof PlatformRoute
   StoriesRoute: typeof StoriesRoute
+  StudentRoute: typeof StudentRouteWithChildren
   WorkspacesRoute: typeof WorkspacesRoute
 }
 
@@ -134,6 +192,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StoriesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/student': {
+      id: '/student'
+      path: '/student'
+      fullPath: '/student'
+      preLoaderRoute: typeof StudentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/workspaces': {
       id: '/workspaces'
       path: '/workspaces'
@@ -141,8 +206,44 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorkspacesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/student/': {
+      id: '/student/'
+      path: '/'
+      fullPath: '/student/'
+      preLoaderRoute: typeof StudentIndexRouteImport
+      parentRoute: typeof StudentRoute
+    }
+    '/student/roadmap': {
+      id: '/student/roadmap'
+      path: '/roadmap'
+      fullPath: '/student/roadmap'
+      preLoaderRoute: typeof StudentRoadmapRouteImport
+      parentRoute: typeof StudentRoute
+    }
+    '/student/skills': {
+      id: '/student/skills'
+      path: '/skills'
+      fullPath: '/student/skills'
+      preLoaderRoute: typeof StudentSkillsRouteImport
+      parentRoute: typeof StudentRoute
+    }
   }
 }
+
+interface StudentRouteChildren {
+  StudentRoadmapRoute: typeof StudentRoadmapRoute
+  StudentSkillsRoute: typeof StudentSkillsRoute
+  StudentIndexRoute: typeof StudentIndexRoute
+}
+
+const StudentRouteChildren: StudentRouteChildren = {
+  StudentRoadmapRoute: StudentRoadmapRoute,
+  StudentSkillsRoute: StudentSkillsRoute,
+  StudentIndexRoute: StudentIndexRoute,
+}
+
+const StudentRouteWithChildren =
+  StudentRoute._addFileChildren(StudentRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -150,6 +251,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   PlatformRoute: PlatformRoute,
   StoriesRoute: StoriesRoute,
+  StudentRoute: StudentRouteWithChildren,
   WorkspacesRoute: WorkspacesRoute,
 }
 export const routeTree = rootRouteImport
