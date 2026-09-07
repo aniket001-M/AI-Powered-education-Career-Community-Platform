@@ -50,4 +50,3 @@ This is a frontend-only application. Data is served from local mock data in `src
 ## License
 
 Private / proprietary.
-
