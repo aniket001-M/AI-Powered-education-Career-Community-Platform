@@ -21,7 +21,7 @@ export const Route = createFileRoute("/faculty/")({
   component: FacultyOverview,
 });
 
-const queue = [
+const queue: [string, string, string][] = [
   ["Systems depth track", "Aniket Ghosh", "Sign-off unblocks the research elective."],
   ["Portfolio narrative", "Divya Raman", "Second revision submitted 20 Aug."],
   ["Interview loop report", "Sana Qureshi", "Panel notes awaiting your summary."],

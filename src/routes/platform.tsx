@@ -28,7 +28,7 @@ export const Route = createFileRoute("/platform")({
   component: Platform,
 });
 
-const surfaces = [
+const surfaces: [string, string][] = [
   ["Skill graph", "Proficiency, demand index and verification for every tracked capability, re-scored each term."],
   ["Term roadmap", "Milestones with status, duration and named outcomes — including the ones blocked on a review."],
   ["Opportunity match", "Roles scored against the current graph, filterable by type, mode and match threshold."],
@@ -36,7 +36,7 @@ const surfaces = [
   ["Placement analytics", "Cohort trend lines, at-risk volume and department comparisons on shared definitions."],
 ];
 
-const faqs = [
+const faqs: [string, string][] = [
   ["Is this a live product?", "No. This build is a front-end demonstration. Every student, role and figure shown is mock data held in the browser."],
   ["How is readiness scored?", "An index of 100 combining verified proficiency, roadmap completion and interview-loop performance."],
   ["Who can see a student's graph?", "The student, their assigned faculty mentor, and administration in aggregate. Seniors see only what a student attaches to a referral."],

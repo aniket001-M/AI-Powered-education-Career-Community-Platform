@@ -103,10 +103,10 @@ function Home() {
         <div className="mx-auto max-w-6xl px-5 py-20">
           <p className="label-caps">From the archive</p>
           <blockquote className="mt-6 max-w-3xl font-display text-3xl leading-snug md:text-4xl">
-            “{alumniStories[0].quote}”
+            “{alumniStories[0]!.quote}”
           </blockquote>
           <p className="mt-6 text-sm text-muted-foreground">
-            {alumniStories[0].name} — {alumniStories[0].role}, {alumniStories[0].company}
+            {alumniStories[0]!.name} — {alumniStories[0]!.role}, {alumniStories[0]!.company}
           </p>
           <Link
             to="/stories"

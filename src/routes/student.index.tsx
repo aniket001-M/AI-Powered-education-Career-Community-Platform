@@ -42,7 +42,7 @@ function StudentOverview() {
     <>
       <PageHeader
         eyebrow="Term 4 · 2026"
-        title={profile.isPending ? "Loading your record" : `Good morning, ${profile.data?.name.split(" ")[0]}`}
+        title={profile.isPending ? "Loading your record" : `Good morning, ${profile.data?.name.split(" ")[0] ?? ""}`}
         description="Everything on this page is generated from your current skill graph and application ledger."
         actions={
           <Button asChild>
@@ -61,7 +61,7 @@ function StudentOverview() {
           <StatCard label="Readiness index" value={String(profile.data!.readiness)} delta="+6" hint="Out of 100" />
           <StatCard label="CGPA" value={profile.data!.cgpa.toFixed(2)} hint="Cumulative" />
           <StatCard label="Live applications" value={String(inFlight)} hint="Excludes drafts" />
-          <StatCard label="Mentor" value={profile.data!.mentor.split(" ").slice(-1)[0]} hint={profile.data!.mentor} />
+          <StatCard label="Mentor" value={profile.data!.mentor.split(" ").slice(-1)[0] ?? ""} hint={profile.data!.mentor} />
         </div>
       )}
 

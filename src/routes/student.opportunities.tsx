@@ -96,7 +96,7 @@ function OpportunitiesPage() {
           <Slider
             id="match"
             value={[minMatch]}
-            onValueChange={([v]) => setMinMatch(v)}
+            onValueChange={([v]) => setMinMatch(v ?? 0)}
             min={0}
             max={100}
             step={5}

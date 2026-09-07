@@ -20,14 +20,14 @@ export const Route = createFileRoute("/about")({
   component: About,
 });
 
-const principles = [
+const principles: [string, string, string][] = [
   ["01", "One definition", "Readiness means the same thing in a student's dashboard and in the board report. No parallel numbers."],
   ["02", "Evidence over claims", "A skill counts when it has been assessed, reviewed or shipped. Everything else is marked unverified."],
   ["03", "Legible by default", "Strict monochrome, generous rules, no decoration that carries no information."],
   ["04", "Slow signals matter", "Term-scale movement is the unit of progress, not weekly activity theatre."],
 ];
 
-const timeline = [
+const timeline: [string, string][] = [
   ["2023", "A department starts tracking readiness by hand in a spreadsheet."],
   ["2024", "The skill-graph model replaces the spreadsheet across three departments."],
   ["2025", "Faculty review and senior referral loops enter the same record."],

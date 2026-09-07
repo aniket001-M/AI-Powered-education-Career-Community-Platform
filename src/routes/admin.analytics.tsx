@@ -50,7 +50,7 @@ function Analytics() {
             <p className="label-caps">Placements per quarter</p>
             <div className="mt-6 h-64">
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={data}>
+                <BarChart data={data ?? []}>
                   <CartesianGrid vertical={false} stroke="var(--color-border)" />
                   <XAxis dataKey="period" tickLine={false} axisLine={false} tick={axis} />
                   <YAxis tickLine={false} axisLine={false} tick={axis} width={32} />
@@ -73,7 +73,7 @@ function Analytics() {
             <p className="label-caps">Median readiness index</p>
             <div className="mt-6 h-64">
               <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={data}>
+                <LineChart data={data ?? []}>
                   <CartesianGrid vertical={false} stroke="var(--color-border)" />
                   <XAxis dataKey="period" tickLine={false} axisLine={false} tick={axis} />
                   <YAxis domain={[40, 80]} tickLine={false} axisLine={false} tick={axis} width={32} />

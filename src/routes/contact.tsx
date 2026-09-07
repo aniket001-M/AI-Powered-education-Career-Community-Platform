@@ -166,8 +166,8 @@ function Field({
   label: string;
   value: string;
   onChange: (v: string) => void;
-  error?: string;
-  type?: string;
+  error?: string | undefined;
+  type?: string | undefined;
 }) {
   return (
     <div className="space-y-2">
