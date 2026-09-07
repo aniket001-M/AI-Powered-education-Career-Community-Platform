@@ -13,13 +13,19 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as FacultyRouteImport } from './routes/faculty'
 import { Route as PlatformRouteImport } from './routes/platform'
+import { Route as SeniorRouteImport } from './routes/senior'
 import { Route as StoriesRouteImport } from './routes/stories'
 import { Route as StudentRouteImport } from './routes/student'
 import { Route as WorkspacesRouteImport } from './routes/workspaces'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as AdminAnalyticsRouteImport } from './routes/admin.analytics'
 import { Route as AdminStudentsRouteImport } from './routes/admin.students'
+import { Route as FacultyIndexRouteImport } from './routes/faculty.index'
+import { Route as FacultyMenteesRouteImport } from './routes/faculty.mentees'
+import { Route as SeniorIndexRouteImport } from './routes/senior.index'
+import { Route as SeniorReferralsRouteImport } from './routes/senior.referrals'
 import { Route as StudentIndexRouteImport } from './routes/student.index'
 import { Route as StudentApplicationsRouteImport } from './routes/student.applications'
 import { Route as StudentOpportunitiesRouteImport } from './routes/student.opportunities'
@@ -47,9 +53,19 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FacultyRoute = FacultyRouteImport.update({
+  id: '/faculty',
+  path: '/faculty',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PlatformRoute = PlatformRouteImport.update({
   id: '/platform',
   path: '/platform',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SeniorRoute = SeniorRouteImport.update({
+  id: '/senior',
+  path: '/senior',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StoriesRoute = StoriesRouteImport.update({
@@ -81,6 +97,26 @@ const AdminStudentsRoute = AdminStudentsRouteImport.update({
   id: '/students',
   path: '/students',
   getParentRoute: () => AdminRoute,
+} as any)
+const FacultyIndexRoute = FacultyIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => FacultyRoute,
+} as any)
+const FacultyMenteesRoute = FacultyMenteesRouteImport.update({
+  id: '/mentees',
+  path: '/mentees',
+  getParentRoute: () => FacultyRoute,
+} as any)
+const SeniorIndexRoute = SeniorIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => SeniorRoute,
+} as any)
+const SeniorReferralsRoute = SeniorReferralsRouteImport.update({
+  id: '/referrals',
+  path: '/referrals',
+  getParentRoute: () => SeniorRoute,
 } as any)
 const StudentIndexRoute = StudentIndexRouteImport.update({
   id: '/',
@@ -118,18 +154,24 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/admin': typeof AdminRouteWithChildren
   '/contact': typeof ContactRoute
+  '/faculty': typeof FacultyRouteWithChildren
   '/platform': typeof PlatformRoute
+  '/senior': typeof SeniorRouteWithChildren
   '/stories': typeof StoriesRoute
   '/student': typeof StudentRouteWithChildren
   '/workspaces': typeof WorkspacesRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/students': typeof AdminStudentsRoute
+  '/faculty/mentees': typeof FacultyMenteesRoute
+  '/senior/referrals': typeof SeniorReferralsRoute
   '/student/applications': typeof StudentApplicationsRoute
   '/student/opportunities': typeof StudentOpportunitiesRoute
   '/student/profile': typeof StudentProfileRoute
   '/student/roadmap': typeof StudentRoadmapRoute
   '/student/skills': typeof StudentSkillsRoute
   '/admin/': typeof AdminIndexRoute
+  '/faculty/': typeof FacultyIndexRoute
+  '/senior/': typeof SeniorIndexRoute
   '/student/': typeof StudentIndexRoute
 }
 export interface FileRoutesByTo {
@@ -141,12 +183,16 @@ export interface FileRoutesByTo {
   '/workspaces': typeof WorkspacesRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/students': typeof AdminStudentsRoute
+  '/faculty/mentees': typeof FacultyMenteesRoute
+  '/senior/referrals': typeof SeniorReferralsRoute
   '/student/applications': typeof StudentApplicationsRoute
   '/student/opportunities': typeof StudentOpportunitiesRoute
   '/student/profile': typeof StudentProfileRoute
   '/student/roadmap': typeof StudentRoadmapRoute
   '/student/skills': typeof StudentSkillsRoute
   '/admin': typeof AdminIndexRoute
+  '/faculty': typeof FacultyIndexRoute
+  '/senior': typeof SeniorIndexRoute
   '/student': typeof StudentIndexRoute
 }
 export interface FileRoutesById {
@@ -155,18 +201,24 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/admin': typeof AdminRouteWithChildren
   '/contact': typeof ContactRoute
+  '/faculty': typeof FacultyRouteWithChildren
   '/platform': typeof PlatformRoute
+  '/senior': typeof SeniorRouteWithChildren
   '/stories': typeof StoriesRoute
   '/student': typeof StudentRouteWithChildren
   '/workspaces': typeof WorkspacesRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/students': typeof AdminStudentsRoute
+  '/faculty/mentees': typeof FacultyMenteesRoute
+  '/senior/referrals': typeof SeniorReferralsRoute
   '/student/applications': typeof StudentApplicationsRoute
   '/student/opportunities': typeof StudentOpportunitiesRoute
   '/student/profile': typeof StudentProfileRoute
   '/student/roadmap': typeof StudentRoadmapRoute
   '/student/skills': typeof StudentSkillsRoute
   '/admin/': typeof AdminIndexRoute
+  '/faculty/': typeof FacultyIndexRoute
+  '/senior/': typeof SeniorIndexRoute
   '/student/': typeof StudentIndexRoute
 }
 export interface FileRouteTypes {
@@ -176,18 +228,24 @@ export interface FileRouteTypes {
     | '/about'
     | '/admin'
     | '/contact'
+    | '/faculty'
     | '/platform'
+    | '/senior'
     | '/stories'
     | '/student'
     | '/workspaces'
     | '/admin/analytics'
     | '/admin/students'
+    | '/faculty/mentees'
+    | '/senior/referrals'
     | '/student/applications'
     | '/student/opportunities'
     | '/student/profile'
     | '/student/roadmap'
     | '/student/skills'
     | '/admin/'
+    | '/faculty/'
+    | '/senior/'
     | '/student/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -199,12 +257,16 @@ export interface FileRouteTypes {
     | '/workspaces'
     | '/admin/analytics'
     | '/admin/students'
+    | '/faculty/mentees'
+    | '/senior/referrals'
     | '/student/applications'
     | '/student/opportunities'
     | '/student/profile'
     | '/student/roadmap'
     | '/student/skills'
     | '/admin'
+    | '/faculty'
+    | '/senior'
     | '/student'
   id:
     | '__root__'
@@ -212,18 +274,24 @@ export interface FileRouteTypes {
     | '/about'
     | '/admin'
     | '/contact'
+    | '/faculty'
     | '/platform'
+    | '/senior'
     | '/stories'
     | '/student'
     | '/workspaces'
     | '/admin/analytics'
     | '/admin/students'
+    | '/faculty/mentees'
+    | '/senior/referrals'
     | '/student/applications'
     | '/student/opportunities'
     | '/student/profile'
     | '/student/roadmap'
     | '/student/skills'
     | '/admin/'
+    | '/faculty/'
+    | '/senior/'
     | '/student/'
   fileRoutesById: FileRoutesById
 }
@@ -232,7 +300,9 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AdminRoute: typeof AdminRouteWithChildren
   ContactRoute: typeof ContactRoute
+  FacultyRoute: typeof FacultyRouteWithChildren
   PlatformRoute: typeof PlatformRoute
+  SeniorRoute: typeof SeniorRouteWithChildren
   StoriesRoute: typeof StoriesRoute
   StudentRoute: typeof StudentRouteWithChildren
   WorkspacesRoute: typeof WorkspacesRoute
@@ -268,11 +338,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/faculty': {
+      id: '/faculty'
+      path: '/faculty'
+      fullPath: '/faculty'
+      preLoaderRoute: typeof FacultyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/platform': {
       id: '/platform'
       path: '/platform'
       fullPath: '/platform'
       preLoaderRoute: typeof PlatformRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/senior': {
+      id: '/senior'
+      path: '/senior'
+      fullPath: '/senior'
+      preLoaderRoute: typeof SeniorRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/stories': {
@@ -316,6 +400,34 @@ declare module '@tanstack/react-router' {
       fullPath: '/admin/students'
       preLoaderRoute: typeof AdminStudentsRouteImport
       parentRoute: typeof AdminRoute
+    }
+    '/faculty/': {
+      id: '/faculty/'
+      path: '/'
+      fullPath: '/faculty/'
+      preLoaderRoute: typeof FacultyIndexRouteImport
+      parentRoute: typeof FacultyRoute
+    }
+    '/faculty/mentees': {
+      id: '/faculty/mentees'
+      path: '/mentees'
+      fullPath: '/faculty/mentees'
+      preLoaderRoute: typeof FacultyMenteesRouteImport
+      parentRoute: typeof FacultyRoute
+    }
+    '/senior/': {
+      id: '/senior/'
+      path: '/'
+      fullPath: '/senior/'
+      preLoaderRoute: typeof SeniorIndexRouteImport
+      parentRoute: typeof SeniorRoute
+    }
+    '/senior/referrals': {
+      id: '/senior/referrals'
+      path: '/referrals'
+      fullPath: '/senior/referrals'
+      preLoaderRoute: typeof SeniorReferralsRouteImport
+      parentRoute: typeof SeniorRoute
     }
     '/student/': {
       id: '/student/'
@@ -376,6 +488,32 @@ const AdminRouteChildren: AdminRouteChildren = {
 
 const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
 
+interface FacultyRouteChildren {
+  FacultyMenteesRoute: typeof FacultyMenteesRoute
+  FacultyIndexRoute: typeof FacultyIndexRoute
+}
+
+const FacultyRouteChildren: FacultyRouteChildren = {
+  FacultyMenteesRoute: FacultyMenteesRoute,
+  FacultyIndexRoute: FacultyIndexRoute,
+}
+
+const FacultyRouteWithChildren =
+  FacultyRoute._addFileChildren(FacultyRouteChildren)
+
+interface SeniorRouteChildren {
+  SeniorReferralsRoute: typeof SeniorReferralsRoute
+  SeniorIndexRoute: typeof SeniorIndexRoute
+}
+
+const SeniorRouteChildren: SeniorRouteChildren = {
+  SeniorReferralsRoute: SeniorReferralsRoute,
+  SeniorIndexRoute: SeniorIndexRoute,
+}
+
+const SeniorRouteWithChildren =
+  SeniorRoute._addFileChildren(SeniorRouteChildren)
+
 interface StudentRouteChildren {
   StudentApplicationsRoute: typeof StudentApplicationsRoute
   StudentOpportunitiesRoute: typeof StudentOpportunitiesRoute
@@ -402,7 +540,9 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AdminRoute: AdminRouteWithChildren,
   ContactRoute: ContactRoute,
+  FacultyRoute: FacultyRouteWithChildren,
   PlatformRoute: PlatformRoute,
+  SeniorRoute: SeniorRouteWithChildren,
   StoriesRoute: StoriesRoute,
   StudentRoute: StudentRouteWithChildren,
   WorkspacesRoute: WorkspacesRoute,
