@@ -11,11 +11,15 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as PlatformRouteImport } from './routes/platform'
 import { Route as StoriesRouteImport } from './routes/stories'
 import { Route as StudentRouteImport } from './routes/student'
 import { Route as WorkspacesRouteImport } from './routes/workspaces'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminAnalyticsRouteImport } from './routes/admin.analytics'
+import { Route as AdminStudentsRouteImport } from './routes/admin.students'
 import { Route as StudentIndexRouteImport } from './routes/student.index'
 import { Route as StudentApplicationsRouteImport } from './routes/student.applications'
 import { Route as StudentOpportunitiesRouteImport } from './routes/student.opportunities'
@@ -31,6 +35,11 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -57,6 +66,21 @@ const WorkspacesRoute = WorkspacesRouteImport.update({
   id: '/workspaces',
   path: '/workspaces',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminAnalyticsRoute = AdminAnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminStudentsRoute = AdminStudentsRouteImport.update({
+  id: '/students',
+  path: '/students',
+  getParentRoute: () => AdminRoute,
 } as any)
 const StudentIndexRoute = StudentIndexRouteImport.update({
   id: '/',
@@ -92,16 +116,20 @@ const StudentSkillsRoute = StudentSkillsRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRouteWithChildren
   '/contact': typeof ContactRoute
   '/platform': typeof PlatformRoute
   '/stories': typeof StoriesRoute
   '/student': typeof StudentRouteWithChildren
   '/workspaces': typeof WorkspacesRoute
+  '/admin/analytics': typeof AdminAnalyticsRoute
+  '/admin/students': typeof AdminStudentsRoute
   '/student/applications': typeof StudentApplicationsRoute
   '/student/opportunities': typeof StudentOpportunitiesRoute
   '/student/profile': typeof StudentProfileRoute
   '/student/roadmap': typeof StudentRoadmapRoute
   '/student/skills': typeof StudentSkillsRoute
+  '/admin/': typeof AdminIndexRoute
   '/student/': typeof StudentIndexRoute
 }
 export interface FileRoutesByTo {
@@ -111,27 +139,34 @@ export interface FileRoutesByTo {
   '/platform': typeof PlatformRoute
   '/stories': typeof StoriesRoute
   '/workspaces': typeof WorkspacesRoute
+  '/admin/analytics': typeof AdminAnalyticsRoute
+  '/admin/students': typeof AdminStudentsRoute
   '/student/applications': typeof StudentApplicationsRoute
   '/student/opportunities': typeof StudentOpportunitiesRoute
   '/student/profile': typeof StudentProfileRoute
   '/student/roadmap': typeof StudentRoadmapRoute
   '/student/skills': typeof StudentSkillsRoute
+  '/admin': typeof AdminIndexRoute
   '/student': typeof StudentIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRouteWithChildren
   '/contact': typeof ContactRoute
   '/platform': typeof PlatformRoute
   '/stories': typeof StoriesRoute
   '/student': typeof StudentRouteWithChildren
   '/workspaces': typeof WorkspacesRoute
+  '/admin/analytics': typeof AdminAnalyticsRoute
+  '/admin/students': typeof AdminStudentsRoute
   '/student/applications': typeof StudentApplicationsRoute
   '/student/opportunities': typeof StudentOpportunitiesRoute
   '/student/profile': typeof StudentProfileRoute
   '/student/roadmap': typeof StudentRoadmapRoute
   '/student/skills': typeof StudentSkillsRoute
+  '/admin/': typeof AdminIndexRoute
   '/student/': typeof StudentIndexRoute
 }
 export interface FileRouteTypes {
@@ -139,16 +174,20 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/admin'
     | '/contact'
     | '/platform'
     | '/stories'
     | '/student'
     | '/workspaces'
+    | '/admin/analytics'
+    | '/admin/students'
     | '/student/applications'
     | '/student/opportunities'
     | '/student/profile'
     | '/student/roadmap'
     | '/student/skills'
+    | '/admin/'
     | '/student/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -158,32 +197,40 @@ export interface FileRouteTypes {
     | '/platform'
     | '/stories'
     | '/workspaces'
+    | '/admin/analytics'
+    | '/admin/students'
     | '/student/applications'
     | '/student/opportunities'
     | '/student/profile'
     | '/student/roadmap'
     | '/student/skills'
+    | '/admin'
     | '/student'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/admin'
     | '/contact'
     | '/platform'
     | '/stories'
     | '/student'
     | '/workspaces'
+    | '/admin/analytics'
+    | '/admin/students'
     | '/student/applications'
     | '/student/opportunities'
     | '/student/profile'
     | '/student/roadmap'
     | '/student/skills'
+    | '/admin/'
     | '/student/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AdminRoute: typeof AdminRouteWithChildren
   ContactRoute: typeof ContactRoute
   PlatformRoute: typeof PlatformRoute
   StoriesRoute: typeof StoriesRoute
@@ -205,6 +252,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -241,6 +295,27 @@ declare module '@tanstack/react-router' {
       fullPath: '/workspaces'
       preLoaderRoute: typeof WorkspacesRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/analytics': {
+      id: '/admin/analytics'
+      path: '/analytics'
+      fullPath: '/admin/analytics'
+      preLoaderRoute: typeof AdminAnalyticsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/students': {
+      id: '/admin/students'
+      path: '/students'
+      fullPath: '/admin/students'
+      preLoaderRoute: typeof AdminStudentsRouteImport
+      parentRoute: typeof AdminRoute
     }
     '/student/': {
       id: '/student/'
@@ -287,6 +362,20 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AdminRouteChildren {
+  AdminAnalyticsRoute: typeof AdminAnalyticsRoute
+  AdminStudentsRoute: typeof AdminStudentsRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminAnalyticsRoute: AdminAnalyticsRoute,
+  AdminStudentsRoute: AdminStudentsRoute,
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
 interface StudentRouteChildren {
   StudentApplicationsRoute: typeof StudentApplicationsRoute
   StudentOpportunitiesRoute: typeof StudentOpportunitiesRoute
@@ -311,6 +400,7 @@ const StudentRouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AdminRoute: AdminRouteWithChildren,
   ContactRoute: ContactRoute,
   PlatformRoute: PlatformRoute,
   StoriesRoute: StoriesRoute,
