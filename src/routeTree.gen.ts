@@ -17,6 +17,9 @@ import { Route as StoriesRouteImport } from './routes/stories'
 import { Route as StudentRouteImport } from './routes/student'
 import { Route as WorkspacesRouteImport } from './routes/workspaces'
 import { Route as StudentIndexRouteImport } from './routes/student.index'
+import { Route as StudentApplicationsRouteImport } from './routes/student.applications'
+import { Route as StudentOpportunitiesRouteImport } from './routes/student.opportunities'
+import { Route as StudentProfileRouteImport } from './routes/student.profile'
 import { Route as StudentRoadmapRouteImport } from './routes/student.roadmap'
 import { Route as StudentSkillsRouteImport } from './routes/student.skills'
 
@@ -60,6 +63,21 @@ const StudentIndexRoute = StudentIndexRouteImport.update({
   path: '/',
   getParentRoute: () => StudentRoute,
 } as any)
+const StudentApplicationsRoute = StudentApplicationsRouteImport.update({
+  id: '/applications',
+  path: '/applications',
+  getParentRoute: () => StudentRoute,
+} as any)
+const StudentOpportunitiesRoute = StudentOpportunitiesRouteImport.update({
+  id: '/opportunities',
+  path: '/opportunities',
+  getParentRoute: () => StudentRoute,
+} as any)
+const StudentProfileRoute = StudentProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => StudentRoute,
+} as any)
 const StudentRoadmapRoute = StudentRoadmapRouteImport.update({
   id: '/roadmap',
   path: '/roadmap',
@@ -79,6 +97,9 @@ export interface FileRoutesByFullPath {
   '/stories': typeof StoriesRoute
   '/student': typeof StudentRouteWithChildren
   '/workspaces': typeof WorkspacesRoute
+  '/student/applications': typeof StudentApplicationsRoute
+  '/student/opportunities': typeof StudentOpportunitiesRoute
+  '/student/profile': typeof StudentProfileRoute
   '/student/roadmap': typeof StudentRoadmapRoute
   '/student/skills': typeof StudentSkillsRoute
   '/student/': typeof StudentIndexRoute
@@ -90,6 +111,9 @@ export interface FileRoutesByTo {
   '/platform': typeof PlatformRoute
   '/stories': typeof StoriesRoute
   '/workspaces': typeof WorkspacesRoute
+  '/student/applications': typeof StudentApplicationsRoute
+  '/student/opportunities': typeof StudentOpportunitiesRoute
+  '/student/profile': typeof StudentProfileRoute
   '/student/roadmap': typeof StudentRoadmapRoute
   '/student/skills': typeof StudentSkillsRoute
   '/student': typeof StudentIndexRoute
@@ -103,6 +127,9 @@ export interface FileRoutesById {
   '/stories': typeof StoriesRoute
   '/student': typeof StudentRouteWithChildren
   '/workspaces': typeof WorkspacesRoute
+  '/student/applications': typeof StudentApplicationsRoute
+  '/student/opportunities': typeof StudentOpportunitiesRoute
+  '/student/profile': typeof StudentProfileRoute
   '/student/roadmap': typeof StudentRoadmapRoute
   '/student/skills': typeof StudentSkillsRoute
   '/student/': typeof StudentIndexRoute
@@ -117,6 +144,9 @@ export interface FileRouteTypes {
     | '/stories'
     | '/student'
     | '/workspaces'
+    | '/student/applications'
+    | '/student/opportunities'
+    | '/student/profile'
     | '/student/roadmap'
     | '/student/skills'
     | '/student/'
@@ -128,6 +158,9 @@ export interface FileRouteTypes {
     | '/platform'
     | '/stories'
     | '/workspaces'
+    | '/student/applications'
+    | '/student/opportunities'
+    | '/student/profile'
     | '/student/roadmap'
     | '/student/skills'
     | '/student'
@@ -140,6 +173,9 @@ export interface FileRouteTypes {
     | '/stories'
     | '/student'
     | '/workspaces'
+    | '/student/applications'
+    | '/student/opportunities'
+    | '/student/profile'
     | '/student/roadmap'
     | '/student/skills'
     | '/student/'
@@ -213,6 +249,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StudentIndexRouteImport
       parentRoute: typeof StudentRoute
     }
+    '/student/applications': {
+      id: '/student/applications'
+      path: '/applications'
+      fullPath: '/student/applications'
+      preLoaderRoute: typeof StudentApplicationsRouteImport
+      parentRoute: typeof StudentRoute
+    }
+    '/student/opportunities': {
+      id: '/student/opportunities'
+      path: '/opportunities'
+      fullPath: '/student/opportunities'
+      preLoaderRoute: typeof StudentOpportunitiesRouteImport
+      parentRoute: typeof StudentRoute
+    }
+    '/student/profile': {
+      id: '/student/profile'
+      path: '/profile'
+      fullPath: '/student/profile'
+      preLoaderRoute: typeof StudentProfileRouteImport
+      parentRoute: typeof StudentRoute
+    }
     '/student/roadmap': {
       id: '/student/roadmap'
       path: '/roadmap'
@@ -231,12 +288,18 @@ declare module '@tanstack/react-router' {
 }
 
 interface StudentRouteChildren {
+  StudentApplicationsRoute: typeof StudentApplicationsRoute
+  StudentOpportunitiesRoute: typeof StudentOpportunitiesRoute
+  StudentProfileRoute: typeof StudentProfileRoute
   StudentRoadmapRoute: typeof StudentRoadmapRoute
   StudentSkillsRoute: typeof StudentSkillsRoute
   StudentIndexRoute: typeof StudentIndexRoute
 }
 
 const StudentRouteChildren: StudentRouteChildren = {
+  StudentApplicationsRoute: StudentApplicationsRoute,
+  StudentOpportunitiesRoute: StudentOpportunitiesRoute,
+  StudentProfileRoute: StudentProfileRoute,
   StudentRoadmapRoute: StudentRoadmapRoute,
   StudentSkillsRoute: StudentSkillsRoute,
   StudentIndexRoute: StudentIndexRoute,
